@@ -83,7 +83,7 @@ module.exports = async function light_loop(light_index, max_brightness, debug) {
       }
       last_color = current_color;
     } else {
-      await sleep(10);
+      await sleep(250);
     }
   }
 };
