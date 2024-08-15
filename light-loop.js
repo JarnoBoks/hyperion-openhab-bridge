@@ -20,7 +20,7 @@ async function send_color(
       brightness,
     });
   }
-  let body = { entity_id: `light.${light_data.id}`, transition: 0.18 };
+  let body = { entity_id: `light.${light_data.id}`, transition: duration };
 
   if (light_data.type == "rgb") {
     body.rgb_color = color;
@@ -73,7 +73,7 @@ module.exports = async function light_loop(light_index, max_brightness, debug) {
         lights[light_index],
         current_color,
         max_brightness,
-        duration,
+        0.25,
         debug
       );
       const after = Date.now();
