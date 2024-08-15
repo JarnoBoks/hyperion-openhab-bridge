@@ -5,6 +5,8 @@ const latest_color = require("./latest_color.js");
 const { getConfig } = require("./get-config.js");
 const { lights } = getConfig();
 
+const DURATION = 0.5; // in seconss
+
 async function send_color(
   light_data,
   color,
@@ -73,7 +75,7 @@ module.exports = async function light_loop(light_index, max_brightness, debug) {
         lights[light_index],
         current_color,
         max_brightness,
-        0.25,
+        DURATION,
         debug
       );
       const after = Date.now();
@@ -83,7 +85,7 @@ module.exports = async function light_loop(light_index, max_brightness, debug) {
       }
       last_color = current_color;
     } else {
-      await sleep(250);
+      await sleep(DURATION * 1000);
     }
   }
 };
