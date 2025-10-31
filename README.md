@@ -1,9 +1,10 @@
 # Use any openHAB lights with Hyperion
 
+This application a fork from https://github.com/JarnoBoks/hyperion-openhab-bridge.
+
 ## Setup:
 
-
-1. Clone this respository;
+1. Clone this repository with `git clone https://{github-username}:{github-token}@github.com/JarnoBoks/hyperion-openhab-bridge.git .hyperion-openhab-bridge`
 2. Edit `config.js` to your liking. There are two light types: `rgb` and
    `dim`. The names of the lights must represent light item id that are present in openHAB;
 3. Generate an openHAB API Token using the Admin view (scroll to the bottom of the view);
@@ -12,13 +13,11 @@
    file;
 5. Run `OH_TOKEN=your_token12341234123432 node .`
 
-   \
-
 To setup the systemd unit to make this run in the background:
 
-
-1. Copy the `hyperion-oh-bridge.service` file in this repo to `/etc/systemd/system/oh-bridge.service`
-2. Adjust the path in `ExecStart` part and the environment variables in the `Environment` part of the `/etc/systemd/system/oh-bridge.service` file;
-3. Run `systemctl daemon-reload && systemctl enable --now oh-bridge`
-
-
+1. Copy the `hyperion-oh-bridge.service` file in this repo to `/etc/systemd/system/oh-bridge.service`, and update this file to your needs
+2. Adjust the username in the `Service` part if necessary.
+3. Adjust the `API_TOKEN` and `OPENHAB_URL` in the `Environment` part of the `/etc/systemd/system/oh-bridge.service` file.
+4. Output you node version with `sudo -u [username-in-step-2] node -v` and update the version number in the `Environment` part of the `/etc/systemd/system/oh-bridge.service` file.
+5. If you use a local Certificate Authority for the SSL certificate on openHAB, add the root ca certificate to the `Environment` part, otherwise delete the line starting with `NODE_EXTRA_CA_CERTS=` in the `/etc/systemd/system/oh-bridge.service` file.
+6. Run `systemctl daemon-reload && systemctl enable --now oh-bridge`
