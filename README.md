@@ -1,6 +1,6 @@
 # Use any openHAB lights with Hyperion
 
-This application a fork from https://github.com/JarnoBoks/hyperion-openhab-bridge.
+This application a fork from https://git.kuba-orlik.name/kuba/hyperion-home-assistant-bridge.
 
 ## Setup:
 
