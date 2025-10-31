@@ -1,19 +1,20 @@
 [Unit]
 Description=Let Hyperion control OpenHAB lights
-Documentation=https://git.kuba-orlik.name/kuba/hyperion-home-assistant-bridge
+Documentation=https://github.com/JarnoBoks/hyperion-openhab-bridge
 Requisite=network.target
 Wants=network-online.target
 After=network-online.target
 After=systemd-resolved.service
 
 [Service]
+User=hyperion
 Environment=OH_TOKEN=[API TOKEN] \
-            OH_URL=[OPENHAB_URL]
+            OH_URL=[OPENHAB_URL] \
+            NODE_EXTRA_CA_CERTS=[PATH_TO_CUSTOM_CA_ROOT_CERTIFICATE] \
             NODE_VERSION=24.11.0 \
             NODE_ENV=production \
-	    NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ratatosk.lan.root.pem
-WorkingDirectory=/root/hyperion-openhab-bridge
-ExecStart=/root/.nvm/nvm-exec node /root/hyperion-openhab-bridge/index.js
+WorkingDirectory=/root/.hyperion-openhab-bridge
+ExecStart=/root/.nvm/nvm-exec node /root/.hyperion-openhab-bridge/index.js
 TimeoutStopSec=5
 KillMode=mixed
 Restart=on-failure
