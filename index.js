@@ -17,7 +17,7 @@ const max_brightness = 0.8;
 
 if (!TOKEN) {
   throw new Error(
-    "Provide the Home Assistant Long Lived Token as a HA_TOKEN environment variable. Go to /profile in Home Assistant and scroll down."
+    "Provide the openHAB API Token as a OH_TOKEN environment variable. Go to Admin in openHAB and scroll down."
   );
 }
 

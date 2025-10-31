@@ -1,4 +1,4 @@
-const { HA_URL, TOKEN, TRANSITION_DURATION_DIVIDER } = require("./env.js");
+const { OH_URL, TOKEN, TRANSITION_DURATION_DIVIDER } = require("./env.js");
 
 const { sleep } = require("./util.js");
 const latest_color = require("./latest_color.js");
@@ -35,20 +35,38 @@ async function send_color(
   if (debug) {
     console.log("sending", body);
   }
+  /*
+    return fetch(`${HA_URL}/api/services/light/turn_on`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: JSON.stringify(body),
+    }).then(async (response) => {
+      if (debug) {
+        console.log(await response.text());
+      }
+    });
+  }
+  */
 
-  return fetch(`${HA_URL}/api/services/light/turn_on`, {
+  return fetch(`${OH_URL}/rest/items/${light_data.id}`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${TOKEN}`,
-      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `X-OPENHAB-TOKEN: ${TOKEN}`,
+      //      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "text/plain",
     },
-    body: JSON.stringify(body),
+    //body: JSON.stringify(body),
+    body: color[0] + "," + color[1] + "," + color[2],
   }).then(async (response) => {
     if (debug) {
       console.log(await response.text());
     }
   });
 }
+
 
 module.exports = async function light_loop(light_index, max_brightness, debug) {
   light_index = parseInt(light_index);

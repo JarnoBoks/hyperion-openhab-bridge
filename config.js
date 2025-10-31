@@ -1,8 +1,8 @@
 module.exports = {
   lights: [
-    { id: "lampa_na_parapecie_rgb_light", type: "rgb" },
+    { id: "TST_Zigbee__Hue_RGB_Bulb_04_HA_Discovery_Color_rgb_string", type: "rgb" },
     {
-      id: "ikea_of_sweden_tradfribulbe27wsglobeopal1055lm_light" /* lampa stojąca */,
+      id: "ikea_of_sweden_tradfribulbe27wsglobeopal1055lm_light",
       type: "dim",
     },
   ],
