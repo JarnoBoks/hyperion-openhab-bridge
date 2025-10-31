@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    "systemd": "/root/.nvm/versions/node/v24.11.0/bin/node index.js"
   },
   "keywords": [],
   "author": "",

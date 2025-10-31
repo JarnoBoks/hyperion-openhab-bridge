@@ -9,7 +9,11 @@ After=systemd-resolved.service
 [Service]
 Environment=OH_TOKEN=[API TOKEN] \
             OH_URL=[OPENHAB_URL]
-ExecStart=node /root/.hyperion-oh/index.js
+            NODE_VERSION=24.11.0 \
+            NODE_ENV=production \
+	    NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ratatosk.lan.root.pem
+WorkingDirectory=/root/hyperion-openhab-bridge
+ExecStart=/root/.nvm/nvm-exec node /root/hyperion-openhab-bridge/index.js
 TimeoutStopSec=5
 KillMode=mixed
 Restart=on-failure
