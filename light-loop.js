@@ -5,7 +5,7 @@ const latest_color = require("./latest_color.js");
 const { getConfig } = require("./get-config.js");
 const { lights } = getConfig();
 
-const DURATION = 0.5; // in seconss
+const DURATION = 0.5; // in seconds
 
 async function send_color(
   light_data,
