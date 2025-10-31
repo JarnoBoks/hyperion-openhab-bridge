@@ -13,8 +13,8 @@ Environment=OH_TOKEN=[API TOKEN] \
             NODE_EXTRA_CA_CERTS=[PATH_TO_CUSTOM_CA_ROOT_CERTIFICATE] \
             NODE_VERSION=24.11.0 \
             NODE_ENV=production \
-WorkingDirectory=/root/.hyperion-openhab-bridge
-ExecStart=/root/.nvm/nvm-exec node /root/.hyperion-openhab-bridge/index.js
+WorkingDirectory=/home/hyperion/.hyperion-openhab-bridge
+ExecStart=/home/hyperion/.nvm/nvm-exec node /home/hyperion/.hyperion-openhab-bridge/index.js
 TimeoutStopSec=5
 KillMode=mixed
 Restart=on-failure
